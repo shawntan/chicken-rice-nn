@@ -159,9 +159,8 @@ if __name__ == "__main__":
 	sentence_file = sys.argv[2]
 	test_file = sys.argv[3]
 
-	vocab2id = pickle.load(open(vocab_file,'r'))
-	id2vocab = [None]*len(vocab2id)
-	for k,v in vocab2id.iteritems(): id2vocab[v]=k
+	id2vocab = pickle.load(open(vocab_file,'r'))
+	vocab2id = { w:i for i,w in enumerate(id2vocab) }
 
 	predict,acc_gradient,train_acc,test,P = training_model(vocab2id,20)
 
