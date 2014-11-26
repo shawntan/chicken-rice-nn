@@ -73,12 +73,6 @@ def build_lstm_step(P,word_vector_size,hidden_state_size):
 
 	return step
 
-
-
-
-
-
-
 def create_model(ids,vocab2id,size):
 	word_vector_size  = size
 	hidden_state_size = size
