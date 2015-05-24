@@ -49,15 +49,3 @@ def batch(stream,batch_size=10):
 			yield batch
 			batch = []
 	if len(batch) > 0: yield batch
-
-if __name__ == "__main__":
-	from pprint import pprint
-	group_answers = group_answers(sys.argv[1])
-
-	vocab_in = vocab.load("qa2.pkl")
-	training_set = story_question_answer_idx(group_answers,vocab_in)
-	rev_map = {}
-	for key,val in vocab_in.iteritems(): rev_map[val] = key
-	for input_data,idxs,question_data,ans_w,ans_evd in training_set:
-		print input_data
-
