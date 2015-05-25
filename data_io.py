@@ -1,9 +1,8 @@
 import re
 import sys
 import cPickle as pickle
+
 import numpy as np
-import vocab
-from pprint import pprint
 import random
 
 def stream(filename,char2id):

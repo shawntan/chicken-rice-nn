@@ -12,14 +12,12 @@ def build(P,character_count,embedding_size=20,hidden_size=50):
 			name = "recurrent_1",
 			input_size = embedding_size,
 			hidden_size = hidden_size,
-#			truncate_gradient = 100
 		)
 
 	lstm_layer_2 = lstm.build(P,
 			name = "recurrent_2",
 			input_size =  hidden_size,
 			hidden_size = hidden_size,
-#			truncate_gradient = 100
 		)
 
 	P.W_output = np.zeros((hidden_size,character_count))

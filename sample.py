@@ -1,9 +1,11 @@
 import sys
 import numpy as np
+import cPickle as pickle
+
 import theano
 import theano.tensor as T
 import numpy as np
-import cPickle as pickle
+
 import vocab
 import model
 from theano_toolkit.parameters import Parameters

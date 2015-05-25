@@ -127,4 +127,3 @@ def _build_step(P, name, input_size, hidden_size, batched):
         return cell, hid
 
     return _step, _transform
-
