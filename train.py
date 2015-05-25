@@ -1,15 +1,16 @@
 import sys
+import cPickle as pickle
 import numpy as np
 import theano
 import theano.tensor as T
-import numpy as np
-import cPickle as pickle
-import vocab
-import model
+
 from theano_toolkit.parameters import Parameters
 from theano_toolkit import updates
 
+import vocab
+import model
 import data_io
+
 import itertools
 def make_batch_train(P,cost,end_id):
 	batch = T.imatrix('batch')
