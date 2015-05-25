@@ -57,6 +57,6 @@ if __name__ == "__main__":
 			if char == "\n": break
 			result = result + char
 			probs,c1,h1,c2,h2 = sample(temp_input,c_id,c1,h1,c2,h2)
-		print result[:-1]
+		print result
 		
 

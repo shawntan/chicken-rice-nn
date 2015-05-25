@@ -74,7 +74,7 @@ if __name__ == "__main__":
 	params = P.values()
 	train = make_batch_train(P,cost,end_id=char2id["\n"])
 	seen = 0
-	batch_size = 64
+	batch_size = 32
 	epoch = 1
 	from pprint import pprint
 	id2char = pickle.load(open(vocab_file))
@@ -83,7 +83,7 @@ if __name__ == "__main__":
 		print "Epoch:",epoch
 		print "Batch size:",batch_size
 		data_stream = data_io.stream(filename,char2id)
-#		data_stream = ( s for s in data_stream if len(s) <= 200 )
+		data_stream = ( s for s in data_stream if len(s) <= 500 )
 		data_stream = data_io.randomise(data_stream,buffer_size=1024)
 		data_stream = data_io.sortify(data_stream,key=lambda x:len(x),buffer_size=512)
 		batch_data_stream = data_io.batch(data_stream,batch_size=batch_size)
