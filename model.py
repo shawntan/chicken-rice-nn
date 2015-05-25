@@ -1,8 +1,10 @@
 import lstm
 import numpy as np
+
 import theano
 import theano.tensor as T
 import theano_toolkit.utils as U
+
 def build(P,character_count,embedding_size=20,hidden_size=50):
 	P.V = 0.1 * np.random.randn(character_count,embedding_size)
 
