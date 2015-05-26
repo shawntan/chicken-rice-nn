@@ -51,10 +51,16 @@ $.getJSON("params.json",function(params) {
 			'y', 'z', '{', '|', '}', '~'
 		]
 	};
-	sample = function() {
-		var result = "";
+	sample = function(prime) {
+		console.log(prime);
+		var result = prime;
 		var start_id = model.vocab.length;
 		var state = model.next_word(start_id,model.init_h1,model.init_c1,model.init_h2,model.init_c2);
+
+		for (var i=0;i < prime.length; i++) {
+			var id = model.vocab.indexOf(prime[i]);
+			state = model.next_word(id,state.h1,state.c1,state.h2,state.c2);
+		}
 
 		var id = NeuNet.sample(state.output);
 		while((model.vocab[id] != "\n") && (result.length < 200)) {
@@ -64,10 +70,18 @@ $.getJSON("params.json",function(params) {
 		}
 		return result;
 	}
+	function hashString() {
+		var hash = document.location.hash;
+		if (hash && hash.length > 0) {
+			return hash.substring(1,hash.length);
+		} else {
+			return "";
+		}
+	}
 
 	var textbox = $("#gentext")
-	textbox.text(sample());
+	textbox.text(sample(hashString()));
 	setInterval(function() {
-		textbox.text(sample());
+		textbox.text(sample(hashString()));
 	},5000);
 });
