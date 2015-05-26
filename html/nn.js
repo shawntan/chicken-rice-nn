@@ -1,4 +1,6 @@
+
 NeuNet = (function() {
+	var thresh = 10;
 	function createArray(length) {
 		var arr = new Array(length || 0),i = length;
 		if (arguments.length > 1) {
@@ -52,7 +54,22 @@ NeuNet = (function() {
 		this.data = data;
 		this.shape = getDimensions(data);
 	}
-	var thresh = 10;
+
+	NeuNet.applier = function(fun) {
+		var arg_count = fun.length;
+		var buffer = new Array(arg_count);
+		return function() {
+			var result = new Array(arguments[0].shape[0]);
+			for ( var i=0; i < result.length; i++ ) {
+				for ( var j=0; j < arguments.length; j++ ) {
+					buffer[j] = arguments[j].data[i];
+				}
+				result[i] = fun.apply(null,buffer);
+			}
+			return new NeuNet(result);
+		}
+	};
+
 	NeuNet.sigmoid = transformApplier(function(x) {
 		if ( x > thresh ) {
 			return 1;
