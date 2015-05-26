@@ -66,7 +66,8 @@ $.getJSON("params.json",function(params) {
 	}
 
 	var textbox = $("#gentext")
+	textbox.text(sample());
 	setInterval(function() {
 		textbox.text(sample());
-	},3000);
+	},5000);
 });
