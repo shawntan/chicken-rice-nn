@@ -52,7 +52,6 @@ $.getJSON("params.json",function(params) {
 		]
 	};
 	sample = function(prime) {
-		console.log(prime);
 		var result = prime;
 		var start_id = model.vocab.length;
 		var state = model.next_word(start_id,model.init_h1,model.init_c1,model.init_h2,model.init_c2);
