@@ -54,3 +54,4 @@ docs/_build/
 *.pkl
 
 theano_toolkit
+.*.swp
