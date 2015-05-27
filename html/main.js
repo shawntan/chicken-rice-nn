@@ -21,7 +21,7 @@ $.getJSON("params.json",function(params) {
 		word_vec = P.V.idx(c);
 		layer_1 = lstm_1(word_vec,h1,c1);
 		layer_2 = lstm_2(layer_1.hidden,h2,c2);
-		output = NeuNet.softmax((layer_2.hidden.dot(P.W_output)).plus(P.b_output));
+		output = NeuNet.softmax((layer_2.hidden.dot(P.W_output)).plus(P.b_output),0.66);
 		return {
 			"output":output,
 			"h1": layer_1.hidden,

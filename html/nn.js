@@ -107,17 +107,18 @@ NeuNet = (function() {
 		return max_id;
 	};
 
-	NeuNet.softmax = function(vec) {
+	NeuNet.softmax = function(vec,temperature) {
 		/**
 		 * Avoids overflow issues by using something like the logsumexp trick.
 		 * Divide both top and bottom by max, so it cancels out.
 		 */
+		temperature = temperature || 1;
 		var max = vec.max();
 
 		var result = vec.data.slice();
 		var sum = 0;
 		for (var i = 0;i < result.length; i++) {
-			sum += result[i] = Math.exp(result[i] - max);
+			sum += result[i] = Math.exp((result[i] - max)/temperature);
 		}
 
 		for (var i = 0;i < result.length; i++) {
