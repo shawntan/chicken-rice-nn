@@ -29,7 +29,7 @@ the instructions to "deploy" your own model in such a way.
 1. Turn the .pkl model file you have into a .json file with the following
    incantation:
 
-        python -c "import pickle,json; print json.dumps({ k:w.tolist() for k,w in pickle.load(open('firstrun.pkl')).iteritems() })" > params.json
+        python -c "import pickle,json; print json.dumps({ k:w.tolist() for k,w in pickle.load(open('model.pkl')).iteritems() })" > params.json
 
 2. Copy it into the html directory and host that thing somewhere. If you want
    to test it before you host it,
