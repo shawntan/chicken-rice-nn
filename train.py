@@ -232,7 +232,6 @@ if __name__ == "__main__":
 			if increase_count > patience:
 				break
 
-
 		# Run training
 		data_stream = data_io.randomise(data_stream,buffer_size=1024)
 		data_stream = data_io.sortify(data_stream,key=lambda x:len(x),buffer_size=512)
