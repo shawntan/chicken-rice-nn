@@ -15,13 +15,13 @@ parser.add_argument(
 )
 
 parser.add_argument(
-    '--temperature','-t',
+    '--temperature', '-t',
     type=float,
     default=1.0,
     help="Temperature of softmax during sampling."
 )
 parser.add_argument(
-    '--prime','-p',
+    '--prime', '-p',
     type=str,
     default="",
     help="String to prime the network with."
