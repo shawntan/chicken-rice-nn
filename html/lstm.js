@@ -1,3 +1,14 @@
+var computeCell = NeuNet.applier(
+	function(forget_gate,prev_cell,in_gate,cell_updates) {
+		return forget_gate * prev_cell + in_gate * cell_updates;
+	}
+);
+
+var addFour  = NeuNet.applier(function(x,h,b,c) { return x + h + b + c; });
+var addThree = NeuNet.applier(function(x,h,b,c) { return x + h + b; });
+
+
+
 function LSTM(W_cell,W_hidden,W_input,b) {
 	var size = 100;
 
@@ -5,16 +16,6 @@ function LSTM(W_cell,W_hidden,W_input,b) {
 	var b_f = b.idx(1);
 	var b_c = b.idx(2);
 	var b_o = b.idx(3);
-
-	var computeCell = NeuNet.applier(
-		function(forget_gate,prev_cell,in_gate,cell_updates) {
-			return forget_gate * prev_cell + in_gate * cell_updates;
-		}
-	);
-
-	var addFour  = NeuNet.applier(function(x,h,b,c) { return x + h + b + c; });
-	var addThree = NeuNet.applier(function(x,h,b,c) { return x + h + b; });
-
 	return function(input,prev_hidden,prev_cell) {
 		var x = input.dot(W_input);
 		var h = prev_hidden.dot(W_hidden);
