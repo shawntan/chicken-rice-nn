@@ -1,16 +1,29 @@
+import argparse
 import cPickle as pickle
 import sys
-
+parser = argparse.ArgumentParser(
+	description='Extract unique characters in dataset.',
+	formatter_class=argparse.ArgumentDefaultsHelpFormatter
+)
+parser.add_argument(
+    'data_file',
+    type=argparse.FileType('r'),
+    help="Text file for training."
+)
+parser.add_argument(
+    'vocab_file',
+    type=argparse.FileType('wb'),
+    help="Output file to be used by train.py."
+)
+args = parser.parse_args()
 def load(filename):
 	data = pickle.load(open(filename))
 	return { v:i for i,v in enumerate(data) }
 
 
 if __name__ == "__main__":
-	train_file = sys.argv[1]
-	vocab_file = sys.argv[2]
 	charset = set()
-	for line in open(train_file):
+	for line in args.data_file:
 		charset.update(line)
-	pickle.dump(sorted(charset),open(vocab_file,'wb'),2)
+	pickle.dump(sorted(charset),args.vocab_file,2)
 		 
