@@ -1,4 +1,11 @@
+If you got here from https://twitter.com/chris_j_beckham/status/1261679649626652672, I'm sorry, this is an old repo that I renamed.
+
+[This](https://www.instagram.com/kuey.png/) is the best I can do.
+
+
+---
 # theano-nlp
+
 
 This repository is named theano-nlp, but it isn't exactly what it says on the tin.
 I've implemented a character-level language model here. I *could* change the name
